@@ -28,7 +28,8 @@ async function loginUser() {
   }
 
   try {
-    const response = await fetch('https://1c2c8eac-fed3-4b76-b130-c06b95b0f1e7.mock.pstmn.io/api/login', {
+    // const response = await fetch('https://1c2c8eac-fed3-4b76-b130-c06b95b0f1e7.mock.pstmn.io/api/login', {
+    const response = await fetch('http://127.0.0.1:5000/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -40,8 +41,8 @@ async function loginUser() {
 
     if (response.ok) {
       // Store user details in authStore and localStorage
-      authStore.setUser(data.user, data.token);  // Pass points as well
-      alert('Login successful!');
+      // authStore.setUser(data.user, data.token);  // Pass points as well
+      alert('Login successful!\n'+data.message+"\n"+data.username);
       router.push('/dashboard');
     } else {
       errorMessage.value = data.error || 'Login failed!';
